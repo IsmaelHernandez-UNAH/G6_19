@@ -18,7 +18,7 @@
     $body = json_decode(file_get_contents("php://input"), true);
 
     switch($_GET["opc"]){     
-        
+
         case "GetReservas":
         $datos=$reserva->get_reservas();
         echo json_encode($datos);
@@ -28,6 +28,12 @@
             $datos=$reserva->get_reserva($body["NUMERO_RESERVACION"]);
             echo json_encode($datos);
         break;
+
+        case "InsertReserva":
+            $datos=$reserva->insert_reserva($body["NUMERO_RESERVACION"],$body["CODIGO_VUELO"],$body["CODIGO_PASAJERO"],$body["NOMBRE_PASAJERO"],$body["CIUDAD_DESTINO"],$body["FECHA_VUELO"],$body["PRECIO_VUELO"]);
+            Echo json_encode("Reserva Agregada");
+        break;
     
+        
     }
 ?>
