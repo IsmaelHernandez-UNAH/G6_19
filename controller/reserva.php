@@ -34,6 +34,16 @@
             Echo json_encode("Reserva Agregada");
         break;
     
-        
+        case "UpDateReserva":
+            $datos=$reserva->update_reserva($body["NUMERO_RESERVACION"],$body["CODIGO_VUELO"],$body["CODIGO_PASAJERO"],$body["NOMBRE_PASAJERO"],$body["CIUDAD_DESTINO"],$body["FECHA_VUELO"],$body["PRECIO_VUELO"]);
+            Echo json_encode("Reserva Modificada");
+        break;
+
+        case "DeleteReserva":
+        $datos=$reserva->delete_reserva($body["NUMERO_RESERVACION"]);
+        Echo json_encode("Reservacion Eliminada");
+        break;
+
+    
     }
 ?>
