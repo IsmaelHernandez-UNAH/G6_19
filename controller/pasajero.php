@@ -33,5 +33,15 @@
         $datos=$pasajeros->insert_pasajero($body["CodigoPasajero"], $body["Nombres"], $body["Apellidos"], $body["FechaRegistro"], $body["Nacionalidad"], $body["NumeroTelefono"], $body["Email"]);
         echo json_encode("Pasajero Agregado");
       break;
+
+      case "UpDatePasajero":
+        $datos=$pasajeros->update_pasajero($body["CodigoPasajero"], $body["Nombres"], $body["Apellidos"], $body["FechaRegistro"], $body["Nacionalidad"], $body["NumeroTelefono"], $body["Email"]);
+        echo json_encode("Pasajero Modificado");
+      break;
+        
+      case "DeletePasajero":
+      $datos=$pasajeros->delete_pasajero($body["CodigoPasajero"]);
+      echo json_encode("Pasajero Eliminado");
+      break;
     }
 ?>

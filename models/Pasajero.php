@@ -36,5 +36,31 @@
       $sql->execute();
       return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function update_pasajero($CodigoPasajero, $Nombres, $Apellidos, $FechaRegistro, $Nacionalidad, $NumeroTelefono, $Email){
+      $conectar=parent::conexion();
+      parent::set_names();
+      $sql="UPDATE pasajero SET Nombres =?,Apellidos =?,FechaRegistro =?,Nacionalidad =?,NumeroTelefono =?,Email =? WHERE CodigoPasajero =?;";
+      $sql=$conectar->prepare($sql);
+      $sql->bindValue(1,$Nombres);
+      $sql->bindValue(2,$Apellidos);
+      $sql->bindValue(3,$FechaRegistro);
+      $sql->bindValue(4,$Nacionalidad);
+      $sql->bindValue(5,$NumeroTelefono);
+      $sql->bindValue(6,$Email);
+      $sql->bindValue(7,$CodigoPasajero);
+      $sql->execute();
+      return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function delete_pasajero($CodigoPasajero){
+      $conectar=parent::conexion();
+      parent::set_names();
+      $sql="DELETE FROM pasajero WHERE CodigoPasajero = ?";
+      $sql=$conectar->prepare($sql);
+      $sql->bindValue(1,$CodigoPasajero);
+      $sql->execute();
+      return $resultado=$sql->fetchAll(PDO::FETCH_ASSOC);
+    }
   }
 ?>
