@@ -25,8 +25,13 @@
       break;
       
       case "GetPasajero":
-          $datos=$pasajeros->get_pasajero($body["CodigoPasajero"]);
-          echo json_encode($datos);
+        $datos=$pasajeros->get_pasajero($body["CodigoPasajero"]);
+        echo json_encode($datos);
+      break;
+
+      case "InsertPasajero":
+        $datos=$pasajeros->insert_pasajero($body["CodigoPasajero"], $body["Nombres"], $body["Apellidos"], $body["FechaRegistro"], $body["Nacionalidad"], $body["NumeroTelefono"], $body["Email"]);
+        echo json_encode("Pasajero Agregado");
       break;
     }
 ?>
