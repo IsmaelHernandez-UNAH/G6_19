@@ -23,5 +23,10 @@
         $datos=$pasajeros->get_pasajeros();
         echo json_encode($datos);
       break;
+      
+      case "GetPasajero":
+          $datos=$pasajeros->get_pasajero($body["CodigoPasajero"]);
+          echo json_encode($datos);
+      break;
     }
 ?>
